@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "222944772018",
+    "project_id": "onlinesera-5dbbf",
+    "storage_bucket": "onlinesera-5dbbf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222944772018:android:d165397a8746807f582eab",
+        "android_client_info": {
+          "package_name": "com.example.online_sera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222944772018-up048bo13nv9dvuf6lv5os6h4gp90nh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6H9Qkc7FCCRi_bLC49KsVhPrabidaRpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222944772018-up048bo13nv9dvuf6lv5os6h4gp90nh2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
