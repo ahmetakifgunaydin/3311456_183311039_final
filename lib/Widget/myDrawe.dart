@@ -53,21 +53,21 @@ class _MyDrawerState extends State {
             trailing: Icon(Icons.arrow_drop_down),
             children: <Widget>[
               ListTile(
-                title: Text('gübre'),
+                title: Text('Gübre'),
                 trailing: Icon(Icons.arrow_right),
                 onTap: () {
                   Navigator.pushNamed(context, "/gübre");
                 },
               ),
               ListTile(
-                title: Text('yem'),
+                title: Text('Balık Yemi'),
                 trailing: Icon(Icons.arrow_right),
                 onTap: () {
                   Navigator.pushNamed(context, "/yem");
                 },
               ),
               ListTile(
-                title: Text('tohum'),
+                title: Text('Tohum'),
                 trailing: Icon(Icons.arrow_right),
                 onTap: () {
                   Navigator.pushNamed(context, "/tohum");
@@ -98,7 +98,7 @@ class _MyDrawerState extends State {
           ),
           ListTile(
             leading: Icon(Icons.energy_savings_leaf_outlined),
-            title: Text('Enerji tüketimi'),
+            title: Text('Enerji Tüketimi'),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
               Navigator.pushNamed(context, "/enerji");
@@ -135,7 +135,7 @@ class _MyDrawerState extends State {
           ),
           ListTile(
             leading: Icon(Icons.contact_phone_outlined),
-            title: Text('iletişim'),
+            title: Text('İletişim'),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
               Navigator.pushNamed(context, "/iletisim");

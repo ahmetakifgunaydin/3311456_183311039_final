@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                           end: Alignment.bottomRight,
                           colors: [
                             Colors.green.withOpacity(0.7),
-                            Colors.white.withOpacity(0.5)
+                            Colors.lightGreen.withOpacity(0.5)
                           ]),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       boxShadow: [
@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                                 return Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => homepage()));
+                                        builder: (context) => HomePage()));
                               });
                             },
                             child: Container(

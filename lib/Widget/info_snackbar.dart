@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_sera/static.dart' as Static;
 
 SnackBar deleteInfoSnackBar = SnackBar(
-  backgroundColor: Static.PrimaryColor,
+  backgroundColor: Colors.green[800],
   duration: Duration(
     seconds: 2,
   ),
@@ -16,7 +15,7 @@ SnackBar deleteInfoSnackBar = SnackBar(
         width: 6.0,
       ),
       Text(
-        "Long Press to delete",
+        "Silmek için basılı tutun.",
         style: TextStyle(
           fontSize: 16.0,
         ),

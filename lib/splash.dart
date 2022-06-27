@@ -1,5 +1,3 @@
-// not just splash , will ask use for their name here
-
 import 'package:flutter/material.dart';
 import 'package:online_sera/LocalAuth.dart';
 import 'package:online_sera/add_name.dart';
@@ -60,7 +58,7 @@ class _SplashState extends State<Splash> {
         toolbarHeight: 0.0,
       ),
       //
-      backgroundColor: Color(0xffe2e7ef),
+      backgroundColor: Colors.green,
       //
       body: Center(
         child: Container(
@@ -72,11 +70,6 @@ class _SplashState extends State<Splash> {
           ),
           padding: EdgeInsets.all(
             16.0,
-          ),
-          child: Image.asset(
-            "assets/icon.png",
-            width: 64.0,
-            height: 64.0,
           ),
         ),
       ),

@@ -12,6 +12,7 @@ import 'package:online_sera/screens/havadurumu.dart';
 import 'package:online_sera/screens/iletisim.dart';
 import 'package:online_sera/screens/rapor.dart';
 import 'package:online_sera/screens/tahil.dart';
+import 'package:online_sera/screens/tohum.dart';
 import 'package:online_sera/screens/vizyonumuz_misyonumuz.dart';
 import 'package:online_sera/screens/yem.dart';
 
@@ -20,6 +21,8 @@ import 'home_page.dart';
 main() async {
   await Hive.initFlutter();
   await Hive.openBox('money');
+  await Hive.openBox('yem');
+  await Hive.openBox('tohum');
 
   await Firebase.initializeApp(
       options: FirebaseOptions(
@@ -34,13 +37,13 @@ main() async {
       "/": (context) => openpage(),
       "/OpenPage": (context) => LoginPage(),
       "/havadurumu": (context) => havadurumu(),
-      "/home_page": (context) => homepage(),
+      "/home_page": (context) => HomePage(),
       "/gübre": (context) => gubre(),
       "/balik": (context) => balik(),
       "/tahil": (context) => tahil(),
       "/enerji": (context) => enerji(),
       "/yem": (context) => yem(),
-      "/tohum": (context) => yem(),
+      "/tohum": (context) => tohum(),
       "/hakkimizda": (context) => hakkimizda(),
       "/iletisim": (context) => iletisim(),
       "/rapor": (context) => rapor(),
@@ -58,7 +61,7 @@ class mainpage extends StatefulWidget {
 class _mainpageState extends State<mainpage> {
   int currentIndex = 0;
   final screens = [
-    homepage(),
+    HomePage(),
     havadurumu(),
     anlik_takip(),
   ];

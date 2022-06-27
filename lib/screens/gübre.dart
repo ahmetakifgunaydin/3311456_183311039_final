@@ -9,9 +9,10 @@ import 'package:online_sera/Widget/info_snackbar.dart';
 import 'package:online_sera/add_transaction.dart';
 import 'package:online_sera/controllers/db_helper.dart';
 import 'package:online_sera/model/transaction.dart';
-import 'package:online_sera/settings.dart';
 import 'package:online_sera/static.dart' as Static;
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Widget/myDrawe.dart';
 
 class gubre extends StatefulWidget {
   const gubre({Key? key}) : super(key: key);
@@ -35,18 +36,18 @@ class _gubreState extends State<gubre> {
   int index = 1;
 
   List<String> months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
+    "Ocak",
+    "Şubat",
+    "Mart",
+    "Nisan",
+    "Mayıs",
+    "Haziran",
+    "Temmuz",
+    "Ağustos",
+    "Eylül",
+    "Ekim",
+    "Kasım",
+    "Aralık"
   ];
 
   @override
@@ -87,12 +88,11 @@ class _gubreState extends State<gubre> {
     List tempdataSet = [];
 
     for (TransactionModel item in entireData) {
-      if (item.date.month == today.month && item.type == "Expense") {
+      if (item.date.month == today.month && item.type == "Kullanılan") {
         tempdataSet.add(item);
       }
     }
     //
-    // Sorting the list as per the date
     tempdataSet.sort((a, b) => a.date.day.compareTo(b.date.day));
     //
     for (var i = 0; i < tempdataSet.length; i++) {
@@ -112,7 +112,7 @@ class _gubreState extends State<gubre> {
     totalExpense = 0;
     for (TransactionModel data in entireData) {
       if (data.date.month == today.month) {
-        if (data.type == "Income") {
+        if (data.type == "Alınan") {
           totalBalance += data.amount;
           totalIncome += data.amount;
         } else {
@@ -127,9 +127,17 @@ class _gubreState extends State<gubre> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 0.0,
+        title: Text("Gübre"),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.topRight,
+                colors: <Color>[Colors.blueGrey, Colors.white]),
+          ),
+        ),
       ),
-      backgroundColor: Colors.grey[200],
+      drawer: MyDrawer(),
       //
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
@@ -149,10 +157,11 @@ class _gubreState extends State<gubre> {
             16.0,
           ),
         ),
-        backgroundColor: Static.PrimaryColor,
+        backgroundColor: Colors.green[50],
         child: Icon(
           Icons.add_outlined,
           size: 32.0,
+          color: Colors.green[900],
         ),
       ),
       //
@@ -163,7 +172,7 @@ class _gubreState extends State<gubre> {
           if (snapshot.hasError) {
             return Center(
               child: Text(
-                "Oopssss !!! There is some error !",
+                "Bir Hata Oluştu!",
                 style: TextStyle(
                   fontSize: 24.0,
                 ),
@@ -174,7 +183,7 @@ class _gubreState extends State<gubre> {
             if (snapshot.data!.isEmpty) {
               return Center(
                 child: Text(
-                  "You haven't added Any Data !",
+                  "Sistemde hiç veri yok.",
                   style: TextStyle(
                     fontSize: 24.0,
                   ),
@@ -194,74 +203,26 @@ class _gubreState extends State<gubre> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      Column(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                32.0,
+                          Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    8.0,
+                                  ),
+                                  gradient: LinearGradient(
+                                    colors: <Color>[
+                                      Colors.green,
+                                      Colors.black26,
+                                    ],
+                                  ),
+                                ),
                               ),
-                              gradient: LinearGradient(
-                                colors: <Color>[
-                                  Static.PrimaryColor,
-                                  Colors.blueAccent,
-                                ],
-                              ),
-                            ),
-                            child: CircleAvatar(
-                              maxRadius: 28.0,
-                              backgroundColor: Colors.transparent,
-                              child: Image.asset(
-                                "assets/face.png",
-                                width: 64.0,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8.0,
-                          ),
-                          SizedBox(
-                            width: 200.0,
-                            child: Text(
-                              "Welcome ${preferences.getString('name')}",
-                              style: TextStyle(
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.w700,
-                                color: Static.PrimaryMaterialColor[800],
-                              ),
-                              maxLines: 1,
-                            ),
+                            ],
                           ),
                         ],
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            12.0,
-                          ),
-                          color: Colors.white70,
-                        ),
-                        padding: EdgeInsets.all(
-                          12.0,
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context)
-                                .push(
-                              MaterialPageRoute(
-                                builder: (context) => Settings(),
-                              ),
-                            )
-                                .then((value) {
-                              setState(() {});
-                            });
-                          },
-                          child: Icon(
-                            Icons.settings,
-                            size: 32.0,
-                            color: Color(0xff3E454C),
-                          ),
-                        ),
                       ),
                     ],
                   ),
@@ -270,7 +231,7 @@ class _gubreState extends State<gubre> {
                 selectMonth(),
                 //
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
+                  width: MediaQuery.of(context).size.width * 0.8,
                   margin: EdgeInsets.all(
                     12.0,
                   ),
@@ -278,13 +239,13 @@ class _gubreState extends State<gubre> {
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: <Color>[
-                          Static.PrimaryColor,
-                          Colors.blueAccent,
+                          Colors.green,
+                          Colors.lightGreen,
                         ],
                       ),
                       borderRadius: BorderRadius.all(
                         Radius.circular(
-                          24.0,
+                          8.0,
                         ),
                       ),
                     ),
@@ -292,7 +253,7 @@ class _gubreState extends State<gubre> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(
                           Radius.circular(
-                            24.0,
+                            8.0,
                           ),
                         ),
                         // color: Static.PrimaryColor,
@@ -305,7 +266,7 @@ class _gubreState extends State<gubre> {
                       child: Column(
                         children: [
                           Text(
-                            'Total Balance',
+                            'Toplam Miktar',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 22.0,
@@ -317,10 +278,10 @@ class _gubreState extends State<gubre> {
                             height: 12.0,
                           ),
                           Text(
-                            'Rs $totalBalance',
+                            ' $totalBalance kg',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 36.0,
+                              fontSize: 38.0,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                             ),
@@ -387,7 +348,7 @@ class _gubreState extends State<gubre> {
                           ],
                         ),
                         child: Text(
-                          "Not Enough Data to render Chart",
+                          "Grafik için yeterli veri bulunmamaktadır.",
                           style: TextStyle(
                             fontSize: 20.0,
                           ),
@@ -444,7 +405,7 @@ class _gubreState extends State<gubre> {
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
-                    "Recent Transactions",
+                    "Son işlemler:",
                     style: TextStyle(
                       fontSize: 32.0,
                       color: Colors.black87,
@@ -469,7 +430,7 @@ class _gubreState extends State<gubre> {
                     }
 
                     if (dataAtIndex.date.month == today.month) {
-                      if (dataAtIndex.type == "Income") {
+                      if (dataAtIndex.type == "Alınan") {
                         return incomeTile(
                           dataAtIndex.amount,
                           dataAtIndex.note,
@@ -497,7 +458,7 @@ class _gubreState extends State<gubre> {
             );
           } else {
             return Text(
-              "Loading...",
+              "Yükleniyor...",
             );
           }
         },
@@ -538,7 +499,7 @@ class _gubreState extends State<gubre> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Income",
+              "ALınan",
               style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.white70,
@@ -584,7 +545,7 @@ class _gubreState extends State<gubre> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Expense",
+              "Kullanılan.",
               style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.white70,
@@ -615,8 +576,8 @@ class _gubreState extends State<gubre> {
       onLongPress: () async {
         bool? answer = await showConfirmDialog(
           context,
-          "WARNING",
-          "This will delete this record. This action is irreversible. Do you want to continue ?",
+          "Uyarı",
+          "Kayıt silinecek. Bu işlem geri döndürülemez.Onaylıyor musunuz ?",
         );
         if (answer != null && answer) {
           await dbHelper.deleteData(index);
@@ -652,7 +613,7 @@ class _gubreState extends State<gubre> {
                           width: 4.0,
                         ),
                         Text(
-                          "Expense",
+                          "Kullanılan",
                           style: TextStyle(
                             fontSize: 20.0,
                           ),
@@ -713,8 +674,8 @@ class _gubreState extends State<gubre> {
       onLongPress: () async {
         bool? answer = await showConfirmDialog(
           context,
-          "WARNING",
-          "This will delete this record. This action is irreversible. Do you want to continue ?",
+          "Uyarı!",
+          "Kayıt silinecek. Bu işlem geri döndürülemez.Onaylıyor musunuz ?",
         );
 
         if (answer != null && answer) {
@@ -819,7 +780,7 @@ class _gubreState extends State<gubre> {
                 borderRadius: BorderRadius.circular(
                   8.0,
                 ),
-                color: index == 3 ? Static.PrimaryColor : Colors.white,
+                color: index == 3 ? Colors.green[300] : Colors.white,
               ),
               alignment: Alignment.center,
               child: Text(
@@ -827,7 +788,7 @@ class _gubreState extends State<gubre> {
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
-                  color: index == 3 ? Colors.white : Static.PrimaryColor,
+                  color: index == 3 ? Colors.white : Colors.green[900],
                 ),
               ),
             ),
@@ -846,7 +807,7 @@ class _gubreState extends State<gubre> {
                 borderRadius: BorderRadius.circular(
                   8.0,
                 ),
-                color: index == 2 ? Static.PrimaryColor : Colors.white,
+                color: index == 2 ? Colors.green[300] : Colors.white,
               ),
               alignment: Alignment.center,
               child: Text(
@@ -854,7 +815,7 @@ class _gubreState extends State<gubre> {
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
-                  color: index == 2 ? Colors.white : Static.PrimaryColor,
+                  color: index == 2 ? Colors.white : Colors.green[900],
                 ),
               ),
             ),
@@ -873,7 +834,7 @@ class _gubreState extends State<gubre> {
                 borderRadius: BorderRadius.circular(
                   8.0,
                 ),
-                color: index == 1 ? Static.PrimaryColor : Colors.white,
+                color: index == 1 ? Colors.green[300] : Colors.white,
               ),
               alignment: Alignment.center,
               child: Text(
@@ -881,7 +842,7 @@ class _gubreState extends State<gubre> {
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
-                  color: index == 1 ? Colors.white : Static.PrimaryColor,
+                  color: index == 1 ? Colors.white : Colors.green[900],
                 ),
               ),
             ),

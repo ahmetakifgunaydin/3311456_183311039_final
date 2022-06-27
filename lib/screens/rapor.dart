@@ -23,8 +23,9 @@ class _raporState extends State {
         ),
         drawer: MyDrawer(),
         body: Container(
-            child: Center(
-          child: Text("aqaaaa"),
-        )));
+          child: Center(
+            child: Text("aqaaaa"),
+          ),
+        ));
   }
 }
