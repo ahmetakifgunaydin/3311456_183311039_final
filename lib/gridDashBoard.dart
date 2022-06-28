@@ -9,28 +9,21 @@ class GridDashBoard extends StatefulWidget {
 }
 
 class _GridDashBoardState extends State<GridDashBoard> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class GridDashboard extends StatefulWidget {
   Items item1 = new Items(
-    title: "Calendar",
-    subtitle: "March, Wednesday",
-    event: "3 Events",
-    img: "assets/calendar.png",
+    title: "Ana sayfa",
+    subtitle: "dashboard",
+    event: "",
+    img: "assets/home.png",
   );
 
   Items item2 = new Items(
-    title: "Groceries",
-    subtitle: "Bocali, Apple",
-    event: "4 Items",
-    img: "assets/food.png",
+    title: "Üretim",
+    subtitle: "Balık,Tahıl ",
+    event: "",
+    img: "assets/uretim.png",
   );
   Items item3 = new Items(
-    title: "Locations",
+    title: "Hava Durumu",
     subtitle: "Lucy Mao going to Office",
     event: "",
     img: "assets/map.png",
@@ -42,13 +35,13 @@ class GridDashboard extends StatefulWidget {
     img: "assets/festival.png",
   );
   Items item5 = new Items(
-    title: "To do",
+    title: "",
     subtitle: "Homework, Design",
     event: "4 Items",
     img: "assets/todo.png",
   );
   Items item6 = new Items(
-    title: "Settings",
+    title: "Hakkında",
     subtitle: "",
     event: "2 Items",
     img: "assets/setting.png",
@@ -57,7 +50,6 @@ class GridDashboard extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     List<Items> myList = [item1, item2, item3, item4, item5, item6];
-    var color = 0xff453658;
     return Flexible(
       child: GridView.count(
           childAspectRatio: 1.0,
@@ -68,13 +60,14 @@ class GridDashboard extends StatefulWidget {
           children: myList.map((data) {
             return Container(
               decoration: BoxDecoration(
-                  color: Color(color), borderRadius: BorderRadius.circular(10)),
+                  color: Colors.grey.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
                     data.img,
-                    width: 42,
+                    width: 75,
                   ),
                   SizedBox(
                     height: 14,
@@ -83,8 +76,8 @@ class GridDashboard extends StatefulWidget {
                     data.title,
                     style: GoogleFonts.openSans(
                         textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                            color: Colors.black,
+                            fontSize: 22,
                             fontWeight: FontWeight.w600)),
                   ),
                   SizedBox(
@@ -94,18 +87,18 @@ class GridDashboard extends StatefulWidget {
                     data.subtitle,
                     style: GoogleFonts.openSans(
                         textStyle: TextStyle(
-                            color: Colors.white38,
-                            fontSize: 10,
+                            color: Colors.black,
+                            fontSize: 15,
                             fontWeight: FontWeight.w600)),
                   ),
                   SizedBox(
-                    height: 14,
+                    height: 10,
                   ),
                   Text(
                     data.event,
                     style: GoogleFonts.openSans(
                         textStyle: TextStyle(
-                            color: Colors.white70,
+                            color: Colors.black,
                             fontSize: 11,
                             fontWeight: FontWeight.w600)),
                   ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_sera/LocalAuth.dart';
 import 'package:online_sera/add_name.dart';
+import 'package:online_sera/auth.dart';
 import 'package:online_sera/controllers/db_helper.dart';
-import 'package:online_sera/screens/g%C3%BCbre.dart';
+import 'package:online_sera/screens/gübre.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -58,7 +58,7 @@ class _SplashState extends State<Splash> {
         toolbarHeight: 0.0,
       ),
       //
-      backgroundColor: Colors.green,
+      backgroundColor: Color(0xffe2e7ef),
       //
       body: Center(
         child: Container(
@@ -70,6 +70,11 @@ class _SplashState extends State<Splash> {
           ),
           padding: EdgeInsets.all(
             16.0,
+          ),
+          child: Image.asset(
+            "assets/icon.png",
+            width: 64.0,
+            height: 64.0,
           ),
         ),
       ),
