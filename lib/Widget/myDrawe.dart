@@ -56,7 +56,7 @@ class _MyDrawerState extends State {
                 title: Text('Gübre'),
                 trailing: Icon(Icons.arrow_right),
                 onTap: () {
-                  Navigator.pushNamed(context, "/gübre");
+                  Navigator.pushNamed(context, "/gubre");
                 },
               ),
               ListTile(
@@ -105,11 +105,11 @@ class _MyDrawerState extends State {
             },
           ),
           ListTile(
-            leading: Icon(Icons.data_exploration_outlined),
-            title: Text('Rapor'),
+            leading: Icon(Icons.cloud_done_outlined),
+            title: Text('Hava Durumu'),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
-              Navigator.pushNamed(context, "/rapor");
+              Navigator.pushNamed(context, "/havadurumu");
             },
           ),
           ExpansionTile(
@@ -139,6 +139,14 @@ class _MyDrawerState extends State {
             trailing: Icon(Icons.arrow_right),
             onTap: () {
               Navigator.pushNamed(context, "/iletisim");
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.logout_outlined),
+            title: Text('Çıkış'),
+            trailing: Icon(Icons.arrow_right),
+            onTap: () {
+              Navigator.pushNamed(context, "/LoginPage");
             },
           ),
         ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_sera/add_name.dart';
 import 'package:online_sera/auth.dart';
 import 'package:online_sera/controllers/db_helper.dart';
-import 'package:online_sera/screens/gübre.dart';
+import 'package:online_sera/screens/gubre.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);

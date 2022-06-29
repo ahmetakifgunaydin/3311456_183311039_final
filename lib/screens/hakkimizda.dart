@@ -1,94 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:online_sera/Widget/myDrawe.dart';
 
 class hakkimizda extends StatefulWidget {
   @override
+  State<StatefulWidget> createState() => _hakkimizdaState();
+}
+
+class _hakkimizdaState extends State {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.redAccent, Colors.blueGrey],
-              ),
+      appBar: AppBar(
+        title: Text("Hakkımızda"),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+              colors: <Color>[
+                Colors.blueAccent,
+                Colors.blueGrey,
+              ],
             ),
-            child: Container(
-              width: double.infinity,
-              height: 350.0,
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://cdn.pixabay.com/photo/2017/12/22/17/28/nature-3033979_1280.jpg"),
-                      radius: 50.0,
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Text(
-                      "Online Sera",
-                      style: TextStyle(fontSize: 32.0, color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Card(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      clipBehavior: Clip.antiAlias,
-                      color: Colors.white,
-                      elevation: 8.0,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 22.0, horizontal: 8.0),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    "Kullanıcı",
-                                    style: TextStyle(
-                                      color: Colors.redAccent,
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10.0,
-                                  ),
-                                  Text(
-                                    "5 Kullanıcı",
-                                    style: TextStyle(
-                                        color: Colors.pinkAccent,
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+          ),
+        ),
+      ),
+      drawer: MyDrawer(),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Image.asset(
+              "assets/manzara.jpg",
+              width: 500.0,
+              height: 600.0,
+              fit: BoxFit.cover,
             ),
-          )
-        ],
+            Text(
+              "\n \n Lorem Ipsum is simply dummy text of the printing and typesetting industry close. Lorem Ipsum has been the industry's unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, versions of Lorem Ipsum.",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

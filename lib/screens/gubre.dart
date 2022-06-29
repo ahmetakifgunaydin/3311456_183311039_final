@@ -22,7 +22,6 @@ class gubre extends StatefulWidget {
 }
 
 class _gubreState extends State<gubre> {
-  //
   late Box box;
   late SharedPreferences preferences;
   DbHelper dbHelper = DbHelper();
@@ -33,7 +32,7 @@ class _gubreState extends State<gubre> {
   List<FlSpot> dataSet = [];
   DateTime today = DateTime.now();
   DateTime now = DateTime.now();
-  int index = 1;
+  int index = 3;
 
   List<String> months = [
     "Ocak",
@@ -54,7 +53,7 @@ class _gubreState extends State<gubre> {
   void initState() {
     super.initState();
     getPreference();
-    box = Hive.box('money');
+    box = Hive.box('gubre');
   }
 
   getPreference() async {
@@ -65,7 +64,7 @@ class _gubreState extends State<gubre> {
     if (box.values.isEmpty) {
       return Future.value([]);
     } else {
-      // return Future.value(box.toMap());
+      Future.value(box.toMap());
       List<TransactionModel> items = [];
       box.toMap().values.forEach((element) {
         // print(element);
@@ -709,7 +708,7 @@ class _gubreState extends State<gubre> {
                       width: 4.0,
                     ),
                     Text(
-                      "Credit",
+                      "Alınan",
                       style: TextStyle(
                         fontSize: 20.0,
                       ),

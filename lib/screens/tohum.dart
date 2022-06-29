@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:online_sera/Widget/confirm_diolog.dart';
@@ -22,8 +21,7 @@ class tohum extends StatefulWidget {
 }
 
 class _tohumState extends State<tohum> {
-  //
-  late Box box;
+  var box3 = Hive.box('gubre');
   late SharedPreferences preferences;
   DbHelper dbHelper = DbHelper();
   Map? data;
@@ -33,7 +31,7 @@ class _tohumState extends State<tohum> {
   List<FlSpot> dataSet = [];
   DateTime today = DateTime.now();
   DateTime now = DateTime.now();
-  int index = 1;
+  int index = 2;
 
   List<String> months = [
     "Ocak",
@@ -54,7 +52,7 @@ class _tohumState extends State<tohum> {
   void initState() {
     super.initState();
     getPreference();
-    box = Hive.box('tohum');
+    box3 = Hive.box('tohum');
   }
 
   getPreference() async {
@@ -62,12 +60,12 @@ class _tohumState extends State<tohum> {
   }
 
   Future<List<TransactionModel>> fetch() async {
-    if (box.values.isEmpty) {
+    if (box3.values.isEmpty) {
       return Future.value([]);
     } else {
-      // return Future.value(box.toMap());
+      Future.value(box3.toMap());
       List<TransactionModel> items = [];
-      box.toMap().values.forEach((element) {
+      box3.toMap().values.forEach((element) {
         // print(element);
         items.add(
           TransactionModel(
@@ -149,7 +147,7 @@ class _tohumState extends State<tohum> {
               builder: (context) => AddExpenseNoGradient(),
             ),
           )
-              .then((value) {
+              .then((value2) {
             setState(() {});
           });
         },
@@ -710,7 +708,7 @@ class _tohumState extends State<tohum> {
                       width: 4.0,
                     ),
                     Text(
-                      "Credit",
+                      "Alınan",
                       style: TextStyle(
                         fontSize: 20.0,
                       ),

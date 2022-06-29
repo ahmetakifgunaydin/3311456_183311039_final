@@ -2,32 +2,32 @@ import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DbHelper {
-  late Box box;
+  var box = Hive.box('gubre');
+  var box2 = Hive.box('yem');
+  var box3 = Hive.box('tohum');
   late SharedPreferences preferences;
-
-  DbHelper() {
-    openBox();
-  }
-
-  openBox() {
-    box = Hive.box('money');
-    box = Hive.box('yem');
-    box = Hive.box('tohum');
-  }
 
   void addData(int amount, DateTime date, String type, String note) async {
     var value = {'amount': amount, 'date': date, 'type': type, 'note': note};
-    box.add(value);
+    var value2 = {'amount': amount, 'date': date, 'type': type, 'note': note};
+    var value3 = {'amount': amount, 'date': date, 'type': type, 'note': note};
+    await box.add(value);
+    await box2.add(value2);
+    await box3.add(value3);
   }
 
   Future deleteData(
     int index,
   ) async {
     await box.deleteAt(index);
+    await box2.deleteAt(index);
+    await box3.deleteAt(index);
   }
 
   Future cleanData() async {
     await box.clear();
+    await box2.clear();
+    await box3.clear();
   }
 
   addName(String name) async {

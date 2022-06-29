@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:online_sera/controllers/db_helper.dart';
-import 'package:online_sera/screens/g%C3%BCbre.dart';
+import 'package:online_sera/screens/gubre.dart';
 
 class AddName extends StatefulWidget {
   const AddName({Key? key}) : super(key: key);

@@ -11,7 +11,7 @@ class GridDashBoard extends StatefulWidget {
 class _GridDashBoardState extends State<GridDashBoard> {
   Items item1 = new Items(
     title: "Ana sayfa",
-    subtitle: "dashboard",
+    subtitle: "Dashboard",
     event: "",
     img: "assets/home.png",
   );
@@ -23,28 +23,28 @@ class _GridDashBoardState extends State<GridDashBoard> {
     img: "assets/uretim.png",
   );
   Items item3 = new Items(
-    title: "Hava Durumu",
-    subtitle: "Lucy Mao going to Office",
+    title: "Stok",
+    subtitle: "Stok raporu",
     event: "",
-    img: "assets/map.png",
+    img: "assets/stok.png",
   );
   Items item4 = new Items(
-    title: "Activity",
-    subtitle: "Rose favirited your Post",
+    title: "Enerji Tüketimi",
+    subtitle: "Elektrik enerjisi",
     event: "",
-    img: "assets/festival.png",
+    img: "assets/energy.png",
   );
   Items item5 = new Items(
-    title: "",
-    subtitle: "Homework, Design",
-    event: "4 Items",
-    img: "assets/todo.png",
+    title: "Hava Durumu",
+    subtitle: "Detaylı hava durumu raporu",
+    event: "sıcaklık,nem,rüzgar hızı",
+    img: "assets/cloud.png",
   );
   Items item6 = new Items(
-    title: "Hakkında",
-    subtitle: "",
-    event: "2 Items",
-    img: "assets/setting.png",
+    title: "İletişim",
+    subtitle: "İletişim adreslerimiz",
+    event: "e posta , tel",
+    img: "assets/phone.png",
   );
 
   @override

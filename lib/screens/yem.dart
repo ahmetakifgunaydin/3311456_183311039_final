@@ -22,8 +22,7 @@ class yem extends StatefulWidget {
 }
 
 class _yemState extends State<yem> {
-  //
-  late Box box;
+  late Box box2;
   late SharedPreferences preferences;
   DbHelper dbHelper = DbHelper();
   Map? data;
@@ -33,7 +32,7 @@ class _yemState extends State<yem> {
   List<FlSpot> dataSet = [];
   DateTime today = DateTime.now();
   DateTime now = DateTime.now();
-  int index = 1;
+  int index = 2;
 
   List<String> months = [
     "Ocak",
@@ -54,7 +53,7 @@ class _yemState extends State<yem> {
   void initState() {
     super.initState();
     getPreference();
-    box = Hive.box('yem');
+    box2 = Hive.box('yem');
   }
 
   getPreference() async {
@@ -62,12 +61,12 @@ class _yemState extends State<yem> {
   }
 
   Future<List<TransactionModel>> fetch() async {
-    if (box.values.isEmpty) {
+    if (box2.values.isEmpty) {
       return Future.value([]);
     } else {
-      // return Future.value(box.toMap());
+      Future.value(box2.toMap());
       List<TransactionModel> items = [];
-      box.toMap().values.forEach((element) {
+      box2.toMap().values.forEach((element) {
         // print(element);
         items.add(
           TransactionModel(
@@ -149,7 +148,7 @@ class _yemState extends State<yem> {
               builder: (context) => AddExpenseNoGradient(),
             ),
           )
-              .then((value) {
+              .then((value3) {
             setState(() {});
           });
         },
@@ -710,7 +709,7 @@ class _yemState extends State<yem> {
                       width: 4.0,
                     ),
                     Text(
-                      "Credit",
+                      "Alınan",
                       style: TextStyle(
                         fontSize: 20.0,
                       ),

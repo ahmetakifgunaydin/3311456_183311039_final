@@ -6,7 +6,7 @@ import 'package:online_sera/screens/OpenPage.dart';
 import 'package:online_sera/screens/anlik_takip.dart';
 import 'package:online_sera/screens/balik.dart';
 import 'package:online_sera/screens/enerji.dart';
-import 'package:online_sera/screens/g%C3%BCbre.dart';
+import 'package:online_sera/screens/gubre.dart';
 import 'package:online_sera/screens/hakkimizda.dart';
 import 'package:online_sera/screens/havadurumu.dart';
 import 'package:online_sera/screens/iletisim.dart';
@@ -20,7 +20,7 @@ import 'home_page.dart';
 
 main() async {
   await Hive.initFlutter();
-  await Hive.openBox('money');
+  await Hive.openBox('gubre');
   await Hive.openBox('yem');
   await Hive.openBox('tohum');
 
@@ -38,7 +38,7 @@ main() async {
       "/OpenPage": (context) => LoginPage(),
       "/havadurumu": (context) => havadurumu(),
       "/home_page": (context) => HomePage(),
-      "/gübre": (context) => gubre(),
+      "/gubre": (context) => gubre(),
       "/balik": (context) => balik(),
       "/tahil": (context) => tahil(),
       "/enerji": (context) => enerji(),
@@ -47,7 +47,7 @@ main() async {
       "/hakkimizda": (context) => hakkimizda(),
       "/iletisim": (context) => iletisim(),
       "/rapor": (context) => rapor(),
-      "/vizyonumuzmisyonumuz": (context) => vizyonumuz_misyonumuz(),
+      "/vizyonumuzmisyonumuz": (context) => vizyon(),
       "/mainpage": (context) => mainpage(),
     },
   ));

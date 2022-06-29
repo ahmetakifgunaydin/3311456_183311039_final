@@ -1,7 +1,7 @@
 // to launch local auth
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:online_sera/screens/g%C3%BCbre.dart';
+import 'package:online_sera/screens/gubre.dart';
 
 class FingerPrintAuth extends StatefulWidget {
   const FingerPrintAuth({Key? key}) : super(key: key);
